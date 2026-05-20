@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blog - StudyBridge Net Paraíso</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e9e7ed","primary-container": "#0a2463","on-primary-fixed": "#00164d","error-container": "#ffdad6","on-background": "#1b1b20","outline": "#757681","secondary-fixed-dim": "#f0c12c","on-error": "#ffffff","surface-container-highest": "#e3e2e8","on-tertiary-fixed-variant": "#454747","tertiary": "#131516","on-tertiary-fixed": "#1a1c1c","primary": "#00103e","surface-dim": "#dbd9df","surface-container-low": "#f5f3f9","inverse-primary": "#b5c4ff","inverse-on-surface": "#f2f0f6","tertiary-container": "#282a2a","background": "#faf8ff","tertiary-fixed-dim": "#c6c6c7","on-primary-fixed-variant": "#2e4382","on-surface": "#1b1b20","primary-fixed": "#dce1ff","surface": "#faf8ff","on-tertiary-container": "#8f9191","inverse-surface": "#303035","on-secondary-fixed": "#241a00","outline-variant": "#c5c6d2","on-primary-container": "#7a8ed2","surface-tint": "#475b9c","secondary-container": "#fccc38","error": "#ba1a1a","on-secondary-container": "#6f5600","tertiary-fixed": "#e2e2e2","surface-container": "#efedf3","on-surface-variant": "#444650","primary-fixed-dim": "#b5c4ff","secondary-fixed": "#ffdf90","on-primary": "#ffffff","on-error-container": "#93000a","surface-variant": "#e3e2e8","secondary": "#755b00","on-tertiary": "#ffffff","on-secondary-fixed-variant": "#584400","on-secondary": "#ffffff","surface-bright": "#faf8ff","surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    "spacing": { "container-max": "1280px", "stack-sm": "8px", "gutter": "24px", "section-padding": "80px", "stack-md": "16px", "stack-lg": "24px" },
+                    "fontFamily": { "body-md": ["Inter"], "h3": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "label-sm": ["Inter"], "h1": ["Plus Jakarta Sans"], "h2": ["Plus Jakarta Sans"] },
+                    "fontSize": { "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }], "h3": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }], "label-sm": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }], "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }], "h2": ["36px", { "lineHeight": "1.3", "fontWeight": "700" }] }
+                }
+            }
+        }
+    </script>
+<style>.custom-shadow { box-shadow: 0px 4px 20px rgba(10, 36, 99, 0.05); } .custom-shadow-hover:hover { box-shadow: 0px 8px 30px rgba(10, 36, 99, 0.1); }</style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<nav class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md sticky top-0 w-full z-50 border-b border-blue-50 dark:border-blue-900/30 shadow-[0px_4px_20px_rgba(10,36,99,0.05)]">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 py-4">
+<a class="text-xl font-bold text-blue-900 dark:text-white font-['Plus_Jakarta_Sans'] tracking-tight" href="index.html">Global Net Paraíso</a>
+<ul class="hidden md:flex gap-8 items-center font-['Plus_Jakarta_Sans'] font-medium text-sm tracking-tight">
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors hover:opacity-90 duration-300 scale-95 active:scale-90" href="index.html">Inicio</a></li>
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors hover:opacity-90 duration-300 scale-95 active:scale-90" href="la-empresa.html">La Empresa</a></li>
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors hover:opacity-90 duration-300 scale-95 active:scale-90" href="servicios.html">Servicios</a></li>
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors hover:opacity-90 duration-300 scale-95 active:scale-90" href="planes.html">Planes</a></li>
+<li><a class="text-blue-900 dark:text-blue-400 font-bold border-b-2 border-yellow-500 pb-1 hover:opacity-90 duration-300 scale-95 active:scale-90" href="noticias.html">Noticias</a></li>
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors hover:opacity-90 duration-300 scale-95 active:scale-90" href="resenas.html">Reseñas</a></li>
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors hover:opacity-90 duration-300 scale-95 active:scale-90" href="contacto.html">Contacto</a></li>
+</ul>
+<a class="bg-blue-900 text-white px-6 py-2 rounded-lg font-['Plus_Jakarta_Sans'] font-medium text-sm tracking-tight hover:opacity-90 transition-all duration-300 scale-95 active:scale-90 hidden md:block" href="contacto.html">Consulta gratis</a>
+<button id="mobile-menu-btn" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden text-primary-container p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden border-t border-blue-50 bg-white/95 backdrop-blur-md">
+<div class="flex flex-col px-6 py-4 space-y-4 font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight">
+<a class="text-slate-600 hover:text-blue-800 transition-colors" href="index.html">Inicio</a>
+<a class="text-slate-600 hover:text-blue-800 transition-colors" href="la-empresa.html">La Empresa</a>
+<a class="text-slate-600 hover:text-blue-800 transition-colors" href="servicios.html">Servicios</a>
+<a class="text-slate-600 hover:text-blue-800 transition-colors" href="planes.html">Planes</a>
+<a class="text-blue-900 font-bold border-b border-yellow-500 pb-1 w-fit" href="noticias.html">Noticias</a>
+<a class="text-slate-600 hover:text-blue-800 transition-colors" href="resenas.html">Reseñas</a>
+<a class="text-slate-600 hover:text-blue-800 transition-colors" href="contacto.html">Contacto</a>
+<a class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-lg text-center font-semibold" href="contacto.html">Consulta gratis</a>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="py-section-padding">
+<div class="max-w-[1280px] mx-auto px-6">
+<header class="mb-12">
+<h1 class="font-h1 text-h1 text-primary mb-4">Noticias y Actualidad</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Mantente informado sobre los últimos requisitos académicos, tips de vida en Argentina y novedades de nuestros servicios.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Articles Grid (Left Column) -->
+<div class="lg:col-span-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden custom-shadow custom-shadow-hover transition-all duration-300 flex flex-col">
+<div class="h-48 bg-surface-container w-full relative">
+<img alt="Students in campus" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf_w9UYPBRiGau-YPAjhRGOlrz0VYdpEBpg-GRdp42KwzvSgaFIfadOa7K68f_5epwkUZbBIqgUs0x3DdTWvW6E-ATTHwJZmBqKplCaOYgwiP6t7mkI79Vs06UoPvbxOEAB-jMsAs_vtQrSblQSuH7NXFNGdjRTA7OsL6whQnpClc0UCzahiqwLVIpSlV_fr4mg3b-z5U7Y4qxY0JfA_Im3UfKMHYOsw1p9a7jdFfThNrI0KBmUQ6avCYP54_J27eWdFv-t-83kts"/>
+</div>
+<div class="p-8 flex-1 flex flex-col">
+<div class="flex items-center gap-4 mb-4">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm">Trámites</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">15 Oct, 2024</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Nuevos requisitos para la visa de estudiante en Argentina 2024</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-1">Conoce las últimas actualizaciones emitidas por migraciones para agilizar tu proceso de radicación como estudiante internacional.</p>
+<a class="inline-flex items-center gap-2 text-secondary-fixed-dim font-h3 text-[16px] hover:opacity-80 transition-opacity" href="#">Leer más <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_forward</span></a>
+</div>
+</article>
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden custom-shadow custom-shadow-hover transition-all duration-300 flex flex-col">
+<div class="h-48 bg-surface-container w-full relative">
+<img alt="Buenos aires city" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUjFtnaLR1wIwtShed6cHoQTn4IOHJFONr_cbjtX_KxgvHAa0fG07LqoDy_CijncDrCCX7l8l0Jwo30ZmGEiWjQNHW_Q0jXnTHriiFdN8WkxlZNO1m_mOsPa38xO_ZLZ8Pk5zUdzFbzvLKHE7NbZeMFP2HAhIu2CAjgRImzG107x9V89k5wL7XITU-zPmM6DbrdWtWDP1fLXbhNh0iH5T7kXZIepZPCeuaAMfPn8Brwt9FZeIGjhn0HEB3e2D9PS2KgEQJJy_SQ78"/>
+</div>
+<div class="p-8 flex-1 flex flex-col">
+<div class="flex items-center gap-4 mb-4">
+<span class="bg-primary-fixed-dim text-on-primary-fixed px-3 py-1 rounded-full font-label-sm text-label-sm">Vida Estudiantil</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">02 Oct, 2024</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Guía de barrios para estudiantes ecuatorianos en Buenos Aires</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-1">Descubre cuáles son las zonas más seguras, conectadas y económicas para alquilar tu primer departamento cerca de la universidad.</p>
+<a class="inline-flex items-center gap-2 text-secondary-fixed-dim font-h3 text-[16px] hover:opacity-80 transition-opacity" href="#">Leer más <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_forward</span></a>
+</div>
+</article>
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden custom-shadow custom-shadow-hover transition-all duration-300 flex flex-col">
+<div class="h-48 bg-surface-container w-full relative">
+<img alt="Study materials" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjHzlRvxQAgMUBnvecnhbgsJNw_sz_AwwGCFKrvwylkGhQ5bEVyGSHv19RCrZBEyKCQ6yAxoRhV8MmM29R-JBpr3e6OPJZmqvZqSgVe2jB3tZuJFti0FJ9XXDPNpwOAH7BCd_ttaB9cmL0DhNzW9x6-ZZrqXoNhkMvcajw_Bwr3bmGELgCDARQYa9Qxacjk6_I2vnemKJ2e_hBzXJP88shBB7oitt21vdPPdGsSF0n4KTSOnRR-ETmoxTYYy4vj3HE9hwCjgCdCEk"/>
+</div>
+<div class="p-8 flex-1 flex flex-col">
+<div class="flex items-center gap-4 mb-4">
+<span class="bg-surface-container-highest text-on-surface px-3 py-1 rounded-full font-label-sm text-label-sm">Académico</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">28 Sep, 2024</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Cómo convalidar tu título secundario en la UBA</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-1">El paso a paso detallado para asegurar que tus estudios previos sean reconocidos oficialmente por las universidades argentinas.</p>
+<a class="inline-flex items-center gap-2 text-secondary-fixed-dim font-h3 text-[16px] hover:opacity-80 transition-opacity" href="#">Leer más <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_forward</span></a>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-center gap-2">
+<button class="w-10 h-10 rounded-lg border border-outline-variant flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="w-10 h-10 rounded-lg bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm">1</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors font-label-sm text-label-sm">2</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<!-- Sidebar (Right Column) -->
+<aside class="lg:col-span-4 space-y-8">
+<div class="bg-surface-container-lowest p-6 rounded-xl custom-shadow border border-surface-container-highest">
+<h4 class="font-h3 text-[20px] text-primary mb-4">Buscar</h4>
+<div class="relative">
+<input class="w-full bg-surface py-3 pl-4 pr-10 rounded-lg border border-primary-fixed focus:border-primary focus:ring-1 focus:ring-primary outline-none font-body-md text-body-md text-on-surface transition-colors placeholder:text-outline" placeholder="Buscar artículos..." type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-primary"><span class="material-symbols-outlined">search</span></button>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl custom-shadow border border-surface-container-highest">
+<h4 class="font-h3 text-[20px] text-primary mb-4">Categorías</h4>
+<ul class="space-y-3 font-body-md text-body-md text-on-surface-variant">
+<li><a class="flex justify-between items-center hover:text-secondary-fixed-dim transition-colors group" href="#">Trámites y Visas <span class="bg-surface-container px-2 py-0.5 rounded text-sm group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">12</span></a></li>
+<li><a class="flex justify-between items-center hover:text-secondary-fixed-dim transition-colors group" href="#">Vida Estudiantil <span class="bg-surface-container px-2 py-0.5 rounded text-sm group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">8</span></a></li>
+<li><a class="flex justify-between items-center hover:text-secondary-fixed-dim transition-colors group" href="#">Universidades <span class="bg-surface-container px-2 py-0.5 rounded text-sm group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">15</span></a></li>
+<li><a class="flex justify-between items-center hover:text-secondary-fixed-dim transition-colors group" href="#">Casos de Éxito <span class="bg-surface-container px-2 py-0.5 rounded text-sm group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">5</span></a></li>
+</ul>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl custom-shadow border border-surface-container-highest">
+<h4 class="font-h3 text-[20px] text-primary mb-4">Artículos Recientes</h4>
+<div class="space-y-4">
+<a class="flex gap-4 group" href="#">
+<div class="w-16 h-16 rounded bg-surface-container overflow-hidden flex-shrink-0"><img alt="Graduation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWMFyWLyXVn-XLZ6FnMfsuY2dXFiA6FKDprxwRUj4GeVR4PVBVsr7bnUKYBDsZSFKQlhHhQcQtTHenGuGjhrR6OdN_M87_ZZQ86dNGNYzeG4mvlf9hk0l5Or501XvSZq51OJnFAPRMmwJucAZHjJRjeX5dzHThfty0yKT-4MhKH1qIGuOd0qxESDcoaJRo4Gny2hZUC4DtzuJoEs6S4VnlBEGzr6weOAcWMmltCAmuckRm8bIUr4XaqGmszEd29SGuIhpsvwVnMKU"/></div>
+<div><h5 class="font-h3 text-[14px] leading-tight text-primary group-hover:text-secondary-fixed-dim transition-colors mb-1">Calendario de inscripciones UBA 2025</h5><span class="font-label-sm text-[12px] text-outline">10 Oct, 2024</span></div>
+</a>
+<a class="flex gap-4 group" href="#">
+<div class="w-16 h-16 rounded bg-surface-container overflow-hidden flex-shrink-0"><img alt="Meeting" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK2GtSrBpCoNSQD009tK9EIptZgxoJA9RA50ET_7dQZ10ow5UMuxNTYfw9ciQTRZFXZh9FR9qwFfLjY3DED1RpbdqG3hPWsxqNa23fpw-y25JdBuqvMN7IHFGvtUykz-G3NFJnB8MDVEPEXak1OzyX1CNKrWAo-AR5DrE2XKgjYNm4iK8O3kBD7azDxVt31wRrINwBDjPTVd7cc-7hxjMBrSH9rqe8O4cnbNyPG3SBviFXAW63xU6jzmlilIDdRH6lA93cqiISKG0"/></div>
+<div><h5 class="font-h3 text-[14px] leading-tight text-primary group-hover:text-secondary-fixed-dim transition-colors mb-1">Entrevista: La experiencia de estudiar Medicina</h5><span class="font-label-sm text-[12px] text-outline">05 Oct, 2024</span></div>
+</a>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Floating WhatsApp Button -->
+<a class="fixed bottom-8 right-8 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center custom-shadow-hover hover:-translate-y-1 transition-all duration-300 z-40" href="contacto.html">
+<span class="material-symbols-outlined" style="font-size: 28px; font-variation-settings: 'FILL' 1;">chat</span>
+</a>
+<!-- Footer -->
+<footer class="bg-blue-900 dark:bg-slate-950 text-white font-['Inter'] text-sm leading-relaxed w-full pt-20 pb-10 border-t border-white/10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-6">
+<div class="col-span-1 md:col-span-1">
+<span class="text-2xl font-black text-white mb-4 block">Global Net Paraíso</span>
+<p class="text-slate-300 mt-4">Conectando estudiantes ecuatorianos con las mejores oportunidades académicas en Argentina, brindando asesoría integral y segura.</p>
+</div>
+<div>
+<h4 class="font-bold text-white mb-4">Enlaces Rápidos</h4>
+<ul class="space-y-2">
+<li><a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-yellow-500 underline-offset-4" href="index.html">Inicio</a></li>
+<li><a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-yellow-500 underline-offset-4" href="la-empresa.html">La Empresa</a></li>
+<li><a class="text-yellow-500 font-semibold hover:underline decoration-yellow-500 underline-offset-4" href="noticias.html">Noticias</a></li>
+<li><a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-yellow-500 underline-offset-4" href="contacto.html">Contacto</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-white mb-4">Servicios</h4>
+<ul class="space-y-2">
+<li><a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-yellow-500 underline-offset-4" href="servicios.html">Servicios</a></li>
+<li><a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-yellow-500 underline-offset-4" href="planes.html">Planes</a></li>
+<li><a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-yellow-500 underline-offset-4" href="resenas.html">Reseñas</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-white mb-4">Legal</h4>
+<ul class="space-y-2">
+<li><a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-yellow-500 underline-offset-4" href="#">Privacidad</a></li>
+<li><a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-yellow-500 underline-offset-4" href="#">Términos</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-white/10 text-center text-slate-400">© 2024 Global Net Paraíso. Brindando excelencia académica internacional.</div>
+</footer>
+</body></html>

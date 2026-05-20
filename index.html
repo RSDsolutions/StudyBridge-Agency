@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StudyBridge Agency | Template de Agencia Educativa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary-container": "#0a2463",
+          "primary-deep": "#00103e",
+          "primary-fixed": "#dce1ff",
+          "primary-fixed-dim": "#b5c4ff",
+          "on-primary-container": "#7a8ed2",
+          "secondary-container": "#fccc38",
+          "secondary-fixed": "#ffdf90",
+          "secondary-fixed-dim": "#f0c12c",
+          "on-secondary-container": "#6f5600",
+          "background": "#faf8ff",
+          "surface": "#faf8ff",
+          "surface-container-lowest": "#ffffff",
+          "surface-container-low": "#f5f3f9",
+          "surface-container": "#efedf3",
+          "surface-container-high": "#e9e7ed",
+          "surface-variant": "#e3e2e8",
+          "outline-variant": "#c5c6d2",
+          "on-background": "#1b1b20",
+          "on-surface": "#1b1b20",
+          "on-surface-variant": "#444650",
+          "on-primary": "#ffffff",
+        },
+        fontFamily: {
+          display: ["Plus Jakarta Sans", "sans-serif"],
+          body: ["Inter", "sans-serif"],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root {
+    --c-primary: #0a2463;
+    --c-primary-deep: #00103e;
+    --c-accent: #fccc38;
+    --c-accent-deep: #f0c12c;
+    --c-bg: #faf8ff;
+    --anim-speed: 1;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Inter", sans-serif; }
+  .font-display { font-family: "Plus Jakarta Sans", sans-serif; }
+  .material-symbols-outlined { font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24; }
+
+  /* ====== Scroll progress ====== */
+  #scroll-progress {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+    background: linear-gradient(90deg, var(--c-primary) 0%, var(--c-accent) 100%);
+    z-index: 100; transition: width 0.1s linear;
+    box-shadow: 0 0 12px rgba(252, 204, 56, 0.6);
+  }
+
+  /* ====== Hero aurora background ====== */
+  .aurora {
+    position: absolute; inset: 0; overflow: hidden;
+    background: linear-gradient(135deg, #00103e 0%, #0a2463 50%, #1a3590 100%);
+  }
+  .aurora::before, .aurora::after {
+    content: ""; position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5;
+    animation: float-blob calc(20s / var(--anim-speed)) ease-in-out infinite;
+  }
+  .aurora::before {
+    width: 600px; height: 600px; background: #fccc38; top: -200px; right: -100px;
+    opacity: 0.25;
+  }
+  .aurora::after {
+    width: 500px; height: 500px; background: #4a6cd4; bottom: -150px; left: -100px;
+    animation-delay: -10s; opacity: 0.4;
+  }
+  @keyframes float-blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-30px, 40px) scale(0.95); }
+  }
+
+  /* grid noise overlay */
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+
+  /* floating particles */
+  .particle {
+    position: absolute; width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(252, 204, 56, 0.6); pointer-events: none;
+    animation: rise calc(15s / var(--anim-speed)) linear infinite;
+  }
+  @keyframes rise {
+    0% { transform: translateY(110vh) translateX(0) scale(0); opacity: 0; }
+    10% { opacity: 1; transform: translateY(95vh) translateX(0) scale(1); }
+    90% { opacity: 1; }
+    100% { transform: translateY(-10vh) translateX(var(--drift, 0px)) scale(0.5); opacity: 0; }
+  }
+
+  /* ====== Word reveal ====== */
+  .word-reveal { display: inline-block; overflow: hidden; vertical-align: top; }
+  .word-reveal > span {
+    display: inline-block; transform: translateY(110%);
+    animation: wordUp calc(0.9s / var(--anim-speed)) cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes wordUp {
+    to { transform: translateY(0); }
+  }
+
+  /* ====== Underline accent ====== */
+  .accent-underline {
+    position: relative; display: inline-block;
+  }
+  .accent-underline::after {
+    content: ""; position: absolute; left: 0; bottom: 0.05em; width: 100%; height: 0.18em;
+    background: var(--c-accent); z-index: -1; transform-origin: left;
+    transform: scaleX(0); animation: drawLine calc(1.2s / var(--anim-speed)) cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(1.4s / var(--anim-speed));
+    border-radius: 2px;
+  }
+  @keyframes drawLine { to { transform: scaleX(1); } }
+
+  /* ====== Reveal on scroll ====== */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal-stagger > * { opacity: 0; transform: translateY(30px); transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+  .reveal-stagger.in > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: none; }
+  .reveal-stagger.in > *:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: none; }
+  .reveal-stagger.in > *:nth-child(3) { transition-delay: 0.25s; opacity: 1; transform: none; }
+  .reveal-stagger.in > *:nth-child(4) { transition-delay: 0.35s; opacity: 1; transform: none; }
+  .reveal-stagger.in > *:nth-child(5) { transition-delay: 0.45s; opacity: 1; transform: none; }
+  .reveal-stagger.in > *:nth-child(6) { transition-delay: 0.55s; opacity: 1; transform: none; }
+
+  /* ====== Service card with spotlight ====== */
+  .svc-card {
+    position: relative; background: white; border-radius: 18px; padding: 32px;
+    border: 1px solid #e3e2e8;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s, border-color 0.3s;
+    overflow: hidden;
+  }
+  .svc-card::before {
+    content: ""; position: absolute; inset: 0; opacity: 0;
+    background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(252, 204, 56, 0.12), transparent 40%);
+    transition: opacity 0.4s; pointer-events: none;
+  }
+  .svc-card:hover { transform: translateY(-6px); border-color: #c5c6d2;
+    box-shadow: 0 20px 50px -12px rgba(10,36,99,0.18); }
+  .svc-card:hover::before { opacity: 1; }
+  .svc-card:hover .svc-icon { transform: rotate(-8deg) scale(1.08); background: var(--c-accent); }
+  .svc-card:hover .svc-icon .material-symbols-outlined { color: var(--c-primary-deep); }
+  .svc-card:hover .svc-arrow { transform: translateX(4px); }
+  .svc-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: #f5f3f9; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 24px; transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .svc-icon .material-symbols-outlined { color: var(--c-primary); transition: color 0.3s; font-size: 28px; }
+  .svc-arrow { display: inline-block; transition: transform 0.3s; }
+
+  /* ====== Counter ====== */
+  .counter { font-variant-numeric: tabular-nums; }
+
+  /* ====== Timeline ====== */
+  .timeline-track {
+    position: relative;
+  }
+  .timeline-rail {
+    position: absolute; top: 32px; left: 0; right: 0; height: 2px;
+    background: #e3e2e8; z-index: 0;
+  }
+  .timeline-fill {
+    position: absolute; top: 32px; left: 0; height: 2px; width: 0%;
+    background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+    z-index: 1; transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .step-circle {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: white; border: 2px solid #e3e2e8;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Plus Jakarta Sans"; font-weight: 700; font-size: 22px;
+    color: #444650; position: relative; z-index: 2;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .step.in .step-circle {
+    background: var(--c-primary); color: white; border-color: var(--c-primary);
+    box-shadow: 0 8px 24px rgba(10,36,99,0.25);
+  }
+  .step.in.last .step-circle {
+    background: var(--c-accent); color: var(--c-primary-deep); border-color: var(--c-accent);
+    box-shadow: 0 8px 24px rgba(252,204,56,0.4);
+  }
+
+  /* ====== Marquee ====== */
+  .marquee {
+    overflow: hidden; mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  }
+  .marquee-track {
+    display: flex; gap: 64px; width: max-content;
+    animation: scroll-x calc(40s / var(--anim-speed)) linear infinite;
+  }
+  @keyframes scroll-x {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+
+  /* ====== Testimonial carousel ====== */
+  .test-track {
+    display: flex; transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .test-slide { flex: 0 0 100%; padding: 0 12px; }
+  @media (min-width: 768px) {
+    .test-slide { flex: 0 0 33.333%; }
+  }
+  .test-dot {
+    width: 28px; height: 4px; border-radius: 2px; background: #c5c6d2;
+    transition: all 0.4s; cursor: pointer;
+  }
+  .test-dot.active { background: var(--c-primary); width: 44px; }
+
+  /* ====== CTA gradient ribbon ====== */
+  .ribbon {
+    background:
+      radial-gradient(circle at 20% 20%, rgba(252,204,56,0.22) 0%, transparent 35%),
+      radial-gradient(circle at 80% 70%, rgba(122, 142, 210, 0.25) 0%, transparent 40%),
+      linear-gradient(135deg, #00103e 0%, #0a2463 100%);
+  }
+
+  /* ====== Buttons ====== */
+  .btn-primary {
+    position: relative; display: inline-flex; align-items: center; gap: 8px;
+    background: var(--c-accent); color: var(--c-primary-deep);
+    padding: 16px 28px; border-radius: 12px; font-weight: 700; font-size: 14px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 8px 24px rgba(252,204,56,0.35);
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.6s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(252,204,56,0.5); }
+  .btn-primary:hover::before { left: 100%; }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-primary .arrow { transition: transform 0.3s; }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1.5px solid rgba(255,255,255,0.4); color: white;
+    padding: 16px 28px; border-radius: 12px; font-weight: 600; font-size: 14px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    transition: all 0.3s; backdrop-filter: blur(8px);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: white; transform: translateY(-2px); }
+
+  /* ====== Nav link underline ====== */
+  .nav-link {
+    position: relative; padding-bottom: 4px;
+    color: #444650; font-weight: 500; font-size: 14px; letter-spacing: -0.01em;
+    transition: color 0.25s;
+  }
+  .nav-link::after {
+    content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px;
+    background: var(--c-accent); transform: scaleX(0); transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nav-link:hover { color: var(--c-primary); }
+  .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
+  .nav-link.active { color: var(--c-primary); font-weight: 700; }
+  .nav-link.active::after { transform: scaleX(1); }
+
+  /* ====== Floating WhatsApp ====== */
+  .wa-fab {
+    position: fixed; bottom: 24px; right: 24px; z-index: 50;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: #10b981; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 30px rgba(16,185,129,0.4);
+    transition: transform 0.3s;
+  }
+  .wa-fab::before {
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    background: #10b981; opacity: 0.5;
+    animation: pulse-ring calc(2.4s / var(--anim-speed)) cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 0.5; }
+    80%, 100% { transform: scale(1.7); opacity: 0; }
+  }
+  .wa-fab:hover { transform: scale(1.08); }
+
+  /* dot pattern bg */
+  .dot-pattern {
+    background-image: radial-gradient(circle, #c5c6d2 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* tilt cards (cities) */
+  .city-card {
+    position: relative; aspect-ratio: 4/5; border-radius: 22px; overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .city-card::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 35%, rgba(0,16,62,0.85) 100%);
+  }
+  .city-card .city-bg { position: absolute; inset: 0; transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+  .city-card:hover { transform: translateY(-6px); }
+  .city-card:hover .city-bg { transform: scale(1.08); }
+  .city-card .city-info { position: absolute; left: 0; right: 0; bottom: 0; padding: 24px; z-index: 2; color: white; }
+
+  /* hero floating cards */
+  .hero-chip {
+    background: rgba(255,255,255,0.08); backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.18); border-radius: 14px;
+    padding: 14px 18px; color: white; display: flex; align-items: center; gap: 12px;
+    animation: chip-float calc(6s / var(--anim-speed)) ease-in-out infinite;
+  }
+  @keyframes chip-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* --- Editmode panel z-index --- */
+  body[data-edit-active="true"] .wa-fab { display: none; }
+</style>
+<script type="application/json" id="tweak-defaults">
+{
+  "accent": "#fccc38",
+  "animSpeed": 1,
+  "dark": false,
+  "particles": true
+}
+</script>
+</head>
+<body class="bg-background text-on-background antialiased">
+
+<div id="scroll-progress"></div>
+
+<!-- ====== NAV ====== -->
+<nav class="bg-white/80 backdrop-blur-xl sticky top-0 w-full z-40 border-b border-surface-variant" id="topnav">
+  <div class="flex justify-between items-center max-w-7xl mx-auto px-6 py-2">
+    <div class="hidden md:flex items-center gap-3 bg-gradient-to-r from-red-500 to-orange-500 text-white px-4 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase">
+      <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> DEMO - PLANTILLA
+    </div>
+  </div>
+  <div class="flex justify-between items-center max-w-7xl mx-auto px-6 py-4">
+    <a class="flex items-center gap-2 group" href="index.html">
+      <span class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center transition-transform duration-500 group-hover:rotate-[-12deg]">
+        <span class="material-symbols-outlined text-secondary-container" style="font-size:20px;font-variation-settings:'FILL' 1;">public</span>
+      </span>
+      <span class="font-display font-extrabold text-lg text-primary-container tracking-tight">StudyBridge<span class="text-secondary-fixed-dim"> Agency</span></span>
+    </a>
+    <div class="hidden lg:flex gap-7 items-center font-display">
+      <a class="nav-link active" href="index.html">Inicio</a>
+      <a class="nav-link" href="la-empresa.html">La Empresa</a>
+      <a class="nav-link" href="servicios.html">Servicios</a>
+      <a class="nav-link" href="planes.html">Planes</a>
+      <a class="nav-link" href="noticias.html">Noticias</a>
+      <a class="nav-link" href="resenas.html">Reseñas</a>
+      <a class="nav-link" href="contacto.html">Contacto</a>
+    </div>
+    <a class="hidden md:inline-flex items-center gap-2 bg-primary-container text-white font-display font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-primary-deep transition-all duration-300 hover:gap-3 group" href="contacto.html">
+      Consulta gratis
+      <span class="material-symbols-outlined" style="font-size:18px;">arrow_outward</span>
+    </a>
+    <button id="mobile-menu-btn" class="lg:hidden text-primary-container p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-surface-variant bg-white">
+    <div class="flex flex-col px-6 py-4 space-y-3 font-display text-sm">
+      <a class="text-primary-container font-bold" href="index.html">Inicio</a>
+      <a class="text-on-surface-variant" href="la-empresa.html">La Empresa</a>
+      <a class="text-on-surface-variant" href="servicios.html">Servicios</a>
+      <a class="text-on-surface-variant" href="planes.html">Planes</a>
+      <a class="text-on-surface-variant" href="noticias.html">Noticias</a>
+      <a class="text-on-surface-variant" href="resenas.html">Reseñas</a>
+      <a class="text-on-surface-variant" href="contacto.html">Contacto</a>
+      <a class="bg-primary-container text-white px-4 py-2.5 rounded-lg text-center font-semibold mt-2" href="contacto.html">Consulta gratis</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ====== HERO ====== -->
+<header class="relative w-full min-h-[760px] md:min-h-[860px] flex items-center overflow-hidden">
+  <div class="aurora"></div>
+  <div class="hero-grid"></div>
+  <div id="particles" class="absolute inset-0 pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-12 gap-12 items-center w-full">
+    <div class="md:col-span-7 text-white">
+      <div class="inline-flex items-center gap-2 mb-7 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-lg border border-white/15 reveal in">
+        <span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+        <span class="font-display text-xs tracking-wider uppercase text-white/85">Template de Plantilla Educativa</span>
+      </div>
+      <h1 class="font-display font-extrabold text-[44px] sm:text-[56px] md:text-[68px] leading-[1.05] tracking-tight mb-7">
+        <div class="word-reveal"><span style="animation-delay: 0.05s">Tu agencia</span></div><br>
+        <div class="word-reveal"><span style="animation-delay: 0.18s">educativa </span></div><span class="accent-underline"><div class="word-reveal" style="vertical-align:baseline;"><span style="animation-delay: 0.32s">profesional</span></div></span><br>
+        <div class="word-reveal"><span style="animation-delay: 0.46s">empieza aquí.</span></div>
+      </h1>
+      <p class="text-primary-fixed-dim text-lg md:text-xl max-w-xl leading-relaxed mb-10 reveal in" style="transition-delay: 1.4s;">
+        Plantilla completa y personalizable para tu agencia educativa. Todos los elementos necesarios para presentar tus servicios profesionales.
+      </p>
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 reveal in" style="transition-delay: 1.6s;">
+        <a href="planes.html" class="btn-primary">
+          Ver planes <span class="material-symbols-outlined arrow" style="font-size:18px;">arrow_forward</span>
+        </a>
+        <a href="contacto.html" class="btn-ghost">
+          <span class="material-symbols-outlined" style="font-size:18px;">play_circle</span>
+          Cómo trabajamos
+        </a>
+      </div>
+    </div>
+
+    <!-- Floating chips column -->
+    <div class="md:col-span-5 hidden md:flex flex-col gap-4 items-end reveal in" style="transition-delay: 1.8s;">
+      <div class="hero-chip" style="animation-delay: 0s;">
+        <span class="w-9 h-9 rounded-lg bg-secondary-container/20 flex items-center justify-center">
+          <span class="material-symbols-outlined text-secondary-container" style="font-size:20px;font-variation-settings:'FILL' 1;">school</span>
+        </span>
+        <div>
+          <div class="font-display font-bold text-sm">UBA · UNC · UNLP</div>
+          <div class="text-xs text-white/70">+30 universidades aliadas</div>
+        </div>
+      </div>
+      <div class="hero-chip" style="animation-delay: -2s; margin-right: 40px;">
+        <span class="w-9 h-9 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+          <span class="material-symbols-outlined text-emerald-400" style="font-size:20px;font-variation-settings:'FILL' 1;">verified</span>
+        </span>
+        <div>
+          <div class="font-display font-bold text-sm">100% trámites exitosos</div>
+          <div class="text-xs text-white/70">Garantía documental</div>
+        </div>
+      </div>
+      <div class="hero-chip" style="animation-delay: -4s;">
+        <span class="w-9 h-9 rounded-lg bg-blue-400/20 flex items-center justify-center">
+          <span class="material-symbols-outlined text-blue-300" style="font-size:20px;font-variation-settings:'FILL' 1;">support_agent</span>
+        </span>
+        <div>
+          <div class="font-display font-bold text-sm">Acompañamiento 1 a 1</div>
+          <div class="text-xs text-white/70">De Quito a Buenos Aires</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- bottom wave divider -->
+  <svg class="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" style="height:60px;">
+    <path d="M0,80 L0,40 Q360,0 720,40 T1440,40 L1440,80 Z" fill="#faf8ff"></path>
+  </svg>
+</header>
+
+<!-- ====== TRUST STATS ====== -->
+<section class="relative -mt-12 px-6 z-20">
+  <div class="max-w-7xl mx-auto bg-white rounded-2xl shadow-[0_30px_80px_-20px_rgba(10,36,99,0.18)] border border-surface-variant grid grid-cols-2 md:grid-cols-4 reveal-stagger">
+    <div class="p-8 text-center md:border-r border-surface-variant">
+      <div class="font-display font-extrabold text-5xl text-primary-container counter mb-1" data-count="1000" data-suffix="+">0</div>
+      <div class="font-display text-xs uppercase tracking-[0.15em] text-on-surface-variant mt-2">Usuarios satisfechos</div>
+    </div>
+    <div class="p-8 text-center md:border-r border-surface-variant">
+      <div class="font-display font-extrabold text-5xl text-primary-container counter mb-1" data-count="10" data-suffix="+">0</div>
+      <div class="font-display text-xs uppercase tracking-[0.15em] text-on-surface-variant mt-2">Años en servicio</div>
+    </div>
+    <div class="p-8 text-center md:border-r border-surface-variant">
+      <div class="font-display font-extrabold text-5xl text-primary-container counter mb-1" data-count="100" data-suffix="%">0</div>
+      <div class="font-display text-xs uppercase tracking-[0.15em] text-on-surface-variant mt-2">trámites exitosos</div>
+    </div>
+    <div class="p-8 text-center">
+      <div class="font-display font-extrabold text-5xl text-primary-container mb-1">1·1</div>
+      <div class="font-display text-xs uppercase tracking-[0.15em] text-on-surface-variant mt-2">acompañamiento personal</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== UNIVERSITIES MARQUEE ====== -->
+<section class="py-14 bg-white">
+  <div class="max-w-7xl mx-auto px-6 mb-8 text-center">
+    <p class="font-display text-xs uppercase tracking-[0.2em] text-on-surface-variant">Trabajamos con las mejores universidades argentinas</p>
+  </div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <!-- list once -->
+      <div class="flex items-center gap-3 text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">UBA <span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span></div>
+      <div class="text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">Universidad de Buenos Aires</div>
+      <div class="flex items-center gap-3 text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">UNC <span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span></div>
+      <div class="text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">Universidad Nacional de Córdoba</div>
+      <div class="flex items-center gap-3 text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">UNLP <span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span></div>
+      <div class="text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">Universidad de La Plata</div>
+      <div class="flex items-center gap-3 text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">UTN <span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span></div>
+      <div class="text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">Universidad Tecnológica</div>
+      <div class="flex items-center gap-3 text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">UCA <span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span></div>
+      <div class="text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">Universidad Católica Argentina</div>
+      <!-- duplicate -->
+      <div class="flex items-center gap-3 text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">UBA <span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span></div>
+      <div class="text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">Universidad de Buenos Aires</div>
+      <div class="flex items-center gap-3 text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">UNC <span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span></div>
+      <div class="text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">Universidad Nacional de Córdoba</div>
+      <div class="flex items-center gap-3 text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">UNLP <span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span></div>
+      <div class="text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">Universidad de La Plata</div>
+      <div class="flex items-center gap-3 text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">UTN <span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span></div>
+      <div class="text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">Universidad Tecnológica</div>
+      <div class="flex items-center gap-3 text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">UCA <span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span></div>
+      <div class="text-2xl font-display font-bold text-on-surface-variant/70 whitespace-nowrap">Universidad Católica Argentina</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SERVICES ====== -->
+<section class="py-24 bg-surface-container-low relative overflow-hidden">
+  <div class="absolute inset-0 dot-pattern opacity-40 pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="grid md:grid-cols-2 gap-12 mb-16 items-end reveal">
+      <div>
+        <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-primary-container/10">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+          <span class="font-display text-xs tracking-[0.15em] uppercase text-primary-container font-semibold">Lo que hacemos</span>
+        </div>
+        <h2 class="font-display font-extrabold text-4xl md:text-5xl text-on-background tracking-tight leading-tight">
+          Soluciones integrales para que tu única<br>preocupación sea <span class="text-primary-container italic">estudiar</span>.
+        </h2>
+      </div>
+      <p class="font-body text-on-surface-variant text-lg leading-relaxed md:pl-8">
+        Cubrimos cada etapa del proceso — desde la elección de universidad hasta tu primer día de clase en Argentina. Sin sorpresas, sin trámites perdidos.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 reveal-stagger">
+      <a href="servicios.html" class="svc-card group">
+        <div class="svc-icon"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">search</span></div>
+        <h3 class="font-display font-bold text-xl mb-2">Búsqueda de universidades</h3>
+        <p class="text-on-surface-variant leading-relaxed mb-6">Encontramos la institución que mejor se ajusta a tu perfil, presupuesto y carrera.</p>
+        <span class="inline-flex items-center gap-2 font-display text-sm font-bold text-primary-container">Conoce más <span class="svc-arrow material-symbols-outlined" style="font-size:18px;">arrow_forward</span></span>
+      </a>
+      <a href="servicios.html" class="svc-card group">
+        <div class="svc-icon"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">school</span></div>
+        <h3 class="font-display font-bold text-xl mb-2">Inscripción universitaria</h3>
+        <p class="text-on-surface-variant leading-relaxed mb-6">Gestión completa del proceso de admisión con todos los requisitos al día.</p>
+        <span class="inline-flex items-center gap-2 font-display text-sm font-bold text-primary-container">Conoce más <span class="svc-arrow material-symbols-outlined" style="font-size:18px;">arrow_forward</span></span>
+      </a>
+      <a href="servicios.html" class="svc-card group">
+        <div class="svc-icon"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">verified</span></div>
+        <h3 class="font-display font-bold text-xl mb-2">Convalidación de estudios</h3>
+        <p class="text-on-surface-variant leading-relaxed mb-6">Homologación ágil y segura de títulos secundarios o universitarios previos.</p>
+        <span class="inline-flex items-center gap-2 font-display text-sm font-bold text-primary-container">Conoce más <span class="svc-arrow material-symbols-outlined" style="font-size:18px;">arrow_forward</span></span>
+      </a>
+      <a href="servicios.html" class="svc-card group">
+        <div class="svc-icon"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">description</span></div>
+        <h3 class="font-display font-bold text-xl mb-2">Trámite de residencia</h3>
+        <p class="text-on-surface-variant leading-relaxed mb-6">Asistencia legal para la residencia temporal o permanente en Argentina.</p>
+        <span class="inline-flex items-center gap-2 font-display text-sm font-bold text-primary-container">Conoce más <span class="svc-arrow material-symbols-outlined" style="font-size:18px;">arrow_forward</span></span>
+      </a>
+      <a href="servicios.html" class="svc-card group">
+        <div class="svc-icon"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">flight_land</span></div>
+        <h3 class="font-display font-bold text-xl mb-2">Acompañamiento en destino</h3>
+        <p class="text-on-surface-variant leading-relaxed mb-6">Recepción en aeropuerto, alojamiento y orientación inicial en tu nueva ciudad.</p>
+        <span class="inline-flex items-center gap-2 font-display text-sm font-bold text-primary-container">Conoce más <span class="svc-arrow material-symbols-outlined" style="font-size:18px;">arrow_forward</span></span>
+      </a>
+      <a href="servicios.html" class="svc-card group">
+        <div class="svc-icon"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">gavel</span></div>
+        <h3 class="font-display font-bold text-xl mb-2">Asesoría legal migratoria</h3>
+        <p class="text-on-surface-variant leading-relaxed mb-6">Resolución de casos complejos y prevención de problemas migratorios.</p>
+        <span class="inline-flex items-center gap-2 font-display text-sm font-bold text-primary-container">Conoce más <span class="svc-arrow material-symbols-outlined" style="font-size:18px;">arrow_forward</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== HOW IT WORKS / TIMELINE ====== -->
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-20 reveal">
+      <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-secondary-container/30">
+        <span class="font-display text-xs tracking-[0.15em] uppercase text-on-secondary-container font-semibold">El proceso</span>
+      </div>
+      <h2 class="font-display font-extrabold text-4xl md:text-5xl text-on-background tracking-tight leading-tight mb-4">Cómo funciona</h2>
+      <p class="font-body text-on-surface-variant text-lg max-w-2xl mx-auto">Cuatro pasos claros, transparentes, sin atajos. De la primera consulta a tu primera clase.</p>
+    </div>
+
+    <div class="timeline-track grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6">
+      <div class="hidden md:block timeline-rail"></div>
+      <div class="hidden md:block timeline-fill" id="timeline-fill"></div>
+
+      <div class="step text-center" data-step="1">
+        <div class="step-circle mx-auto">1</div>
+        <h4 class="font-display font-bold text-lg mt-6 mb-2">Consulta inicial</h4>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Evaluamos tu perfil y aspiraciones — sin costo ni compromiso.</p>
+      </div>
+      <div class="step text-center" data-step="2">
+        <div class="step-circle mx-auto">2</div>
+        <h4 class="font-display font-bold text-lg mt-6 mb-2">Elección de universidad</h4>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Seleccionamos juntos la mejor opción académica para ti.</p>
+      </div>
+      <div class="step text-center" data-step="3">
+        <div class="step-circle mx-auto">3</div>
+        <h4 class="font-display font-bold text-lg mt-6 mb-2">Gestión de trámites</h4>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Nos encargamos del papeleo, admisión, visa y residencia.</p>
+      </div>
+      <div class="step last text-center" data-step="4">
+        <div class="step-circle mx-auto">4</div>
+        <h4 class="font-display font-bold text-lg mt-6 mb-2">Viaje y llegada</h4>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Te acompañamos hasta tu primer día de clase en Argentina.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CITIES ====== -->
+<section class="py-24 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6 reveal">
+      <div>
+        <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-primary-container/10">
+          <span class="font-display text-xs tracking-[0.15em] uppercase text-primary-container font-semibold">Tu nuevo hogar</span>
+        </div>
+        <h2 class="font-display font-extrabold text-4xl md:text-5xl text-on-background tracking-tight leading-tight">
+          Tres ciudades.<br>Mil futuros posibles.
+        </h2>
+      </div>
+      <a href="la-empresa.html" class="hidden md:inline-flex items-center gap-2 font-display font-bold text-primary-container text-sm">
+        Sobre Argentina <span class="material-symbols-outlined" style="font-size:18px;">arrow_forward</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 reveal-stagger">
+      <a class="city-card group" href="la-empresa.html">
+        <div class="city-bg" style="background: linear-gradient(135deg, #1e3a8a, #0a2463), repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 12px);"></div>
+        <div class="absolute inset-0 flex items-center justify-center opacity-20">
+          <span class="material-symbols-outlined text-white" style="font-size:140px;font-variation-settings:'FILL' 1;">location_city</span>
+        </div>
+        <div class="city-info">
+          <div class="font-display text-xs uppercase tracking-[0.2em] text-secondary-container mb-2">Capital Federal</div>
+          <div class="font-display font-extrabold text-3xl mb-1">Buenos Aires</div>
+          <div class="text-sm text-white/70">UBA · UCA · UTN — la capital cultural de LATAM.</div>
+        </div>
+      </a>
+      <a class="city-card group" href="la-empresa.html">
+        <div class="city-bg" style="background: linear-gradient(135deg, #4a6cd4, #1e3a8a);"></div>
+        <div class="absolute inset-0 flex items-center justify-center opacity-20">
+          <span class="material-symbols-outlined text-white" style="font-size:140px;font-variation-settings:'FILL' 1;">apartment</span>
+        </div>
+        <div class="city-info">
+          <div class="font-display text-xs uppercase tracking-[0.2em] text-secondary-container mb-2">Provincia</div>
+          <div class="font-display font-extrabold text-3xl mb-1">Córdoba</div>
+          <div class="text-sm text-white/70">UNC, la universidad más antigua del país.</div>
+        </div>
+      </a>
+      <a class="city-card group" href="la-empresa.html">
+        <div class="city-bg" style="background: linear-gradient(135deg, #2e4382, #00103e);"></div>
+        <div class="absolute inset-0 flex items-center justify-center opacity-20">
+          <span class="material-symbols-outlined text-white" style="font-size:140px;font-variation-settings:'FILL' 1;">domain</span>
+        </div>
+        <div class="city-info">
+          <div class="font-display text-xs uppercase tracking-[0.2em] text-secondary-container mb-2">Buenos Aires</div>
+          <div class="font-display font-extrabold text-3xl mb-1">La Plata</div>
+          <div class="text-sm text-white/70">UNLP — ciudad universitaria por excelencia.</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== TESTIMONIALS ====== -->
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6 reveal">
+      <div>
+        <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-secondary-container/30">
+          <span class="font-display text-xs tracking-[0.15em] uppercase text-on-secondary-container font-semibold">Historias reales</span>
+        </div>
+        <h2 class="font-display font-extrabold text-4xl md:text-5xl text-on-background tracking-tight leading-tight">
+          Lo que dicen nuestros<br>estudiantes.
+        </h2>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="test-prev" class="w-12 h-12 rounded-full bg-surface-container-low hover:bg-surface-container border border-surface-variant flex items-center justify-center transition-all hover:scale-105">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+        <button id="test-next" class="w-12 h-12 rounded-full bg-primary-container hover:bg-primary-deep text-white flex items-center justify-center transition-all hover:scale-105">
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="overflow-hidden">
+      <div class="test-track" id="test-track">
+        <!-- 6 slides -->
+        <div class="test-slide">
+          <div class="bg-surface-container-low rounded-2xl p-8 h-full border border-surface-variant relative overflow-hidden hover:shadow-xl transition-shadow">
+            <span class="material-symbols-outlined absolute top-4 right-4 text-7xl text-secondary-container/30" style="font-variation-settings:'FILL' 1;">format_quote</span>
+            <div class="flex gap-1 mb-5 text-secondary-fixed-dim">
+              <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span>
+            </div>
+            <p class="font-display text-lg leading-relaxed mb-8 relative">"Hicieron que mi traslado a Buenos Aires fuera súper fácil. El papeleo de la UBA parecía imposible, pero ellos lo resolvieron todo."</p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary-container to-primary-deep flex items-center justify-center text-white font-display font-bold">MG</div>
+              <div>
+                <div class="font-display font-bold">María Fernanda G.</div>
+                <div class="text-sm text-on-surface-variant">UBA · Medicina</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="test-slide">
+          <div class="bg-surface-container-low rounded-2xl p-8 h-full border border-surface-variant relative overflow-hidden hover:shadow-xl transition-shadow">
+            <span class="material-symbols-outlined absolute top-4 right-4 text-7xl text-secondary-container/30" style="font-variation-settings:'FILL' 1;">format_quote</span>
+            <div class="flex gap-1 mb-5 text-secondary-fixed-dim">
+              <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span>
+            </div>
+            <p class="font-display text-lg leading-relaxed mb-8">"Recomiendo totalmente el acompañamiento en destino. Llegar a Córdoba y tener alguien esperándome me dio mucha tranquilidad."</p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-secondary-container to-secondary-fixed-dim flex items-center justify-center text-on-secondary-container font-display font-bold">CM</div>
+              <div>
+                <div class="font-display font-bold">Carlos M.</div>
+                <div class="text-sm text-on-surface-variant">UNC · Arquitectura</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="test-slide">
+          <div class="bg-surface-container-low rounded-2xl p-8 h-full border border-surface-variant relative overflow-hidden hover:shadow-xl transition-shadow">
+            <span class="material-symbols-outlined absolute top-4 right-4 text-7xl text-secondary-container/30" style="font-variation-settings:'FILL' 1;">format_quote</span>
+            <div class="flex gap-1 mb-5 text-secondary-fixed-dim">
+              <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span>
+            </div>
+            <p class="font-display text-lg leading-relaxed mb-8">"La gestión de mi visa de estudiante fue súper rápida. Excelente servicio, muy profesionales y siempre dispuestos."</p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-white font-display font-bold">AP</div>
+              <div>
+                <div class="font-display font-bold">Andrea P.</div>
+                <div class="text-sm text-on-surface-variant">UNLP · Derecho</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="test-slide">
+          <div class="bg-surface-container-low rounded-2xl p-8 h-full border border-surface-variant relative overflow-hidden hover:shadow-xl transition-shadow">
+            <span class="material-symbols-outlined absolute top-4 right-4 text-7xl text-secondary-container/30" style="font-variation-settings:'FILL' 1;">format_quote</span>
+            <div class="flex gap-1 mb-5 text-secondary-fixed-dim">
+              <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span>
+            </div>
+            <p class="font-display text-lg leading-relaxed mb-8">"Ya en mi tercer año de Ingeniería. Sin Global Net no habría podido convalidar mis materias del Ecuador."</p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-800 flex items-center justify-center text-white font-display font-bold">JS</div>
+              <div>
+                <div class="font-display font-bold">Juan Sebastián R.</div>
+                <div class="text-sm text-on-surface-variant">UTN · Ingeniería</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="test-slide">
+          <div class="bg-surface-container-low rounded-2xl p-8 h-full border border-surface-variant relative overflow-hidden hover:shadow-xl transition-shadow">
+            <span class="material-symbols-outlined absolute top-4 right-4 text-7xl text-secondary-container/30" style="font-variation-settings:'FILL' 1;">format_quote</span>
+            <div class="flex gap-1 mb-5 text-secondary-fixed-dim">
+              <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span>
+            </div>
+            <p class="font-display text-lg leading-relaxed mb-8">"Mi familia se quedó tranquila al saber que estaba en buenas manos. El plan Premium vale cada centavo."</p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-rose-500 to-rose-800 flex items-center justify-center text-white font-display font-bold">VL</div>
+              <div>
+                <div class="font-display font-bold">Valeria L.</div>
+                <div class="text-sm text-on-surface-variant">UCA · Comunicación</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="test-slide">
+          <div class="bg-surface-container-low rounded-2xl p-8 h-full border border-surface-variant relative overflow-hidden hover:shadow-xl transition-shadow">
+            <span class="material-symbols-outlined absolute top-4 right-4 text-7xl text-secondary-container/30" style="font-variation-settings:'FILL' 1;">format_quote</span>
+            <div class="flex gap-1 mb-5 text-secondary-fixed-dim">
+              <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1;">star</span>
+            </div>
+            <p class="font-display text-lg leading-relaxed mb-8">"Desde la primera videollamada me sentí escuchado. Profesionalismo y calidez ecuatoriana al 100%."</p>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-violet-500 to-violet-800 flex items-center justify-center text-white font-display font-bold">MT</div>
+              <div>
+                <div class="font-display font-bold">Mateo T.</div>
+                <div class="text-sm text-on-surface-variant">UBA · Economía</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center gap-2 mt-10" id="test-dots"></div>
+
+    <div class="text-center mt-12">
+      <a href="resenas.html" class="inline-flex items-center gap-2 font-display font-bold text-primary-container hover:text-primary-deep group">
+        Ver todas las reseñas
+        <span class="material-symbols-outlined transition-transform group-hover:translate-x-1" style="font-size:18px;">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CTA RIBBON ====== -->
+<section class="py-20 ribbon text-white relative overflow-hidden">
+  <div class="absolute inset-0 hero-grid opacity-50"></div>
+  <div class="max-w-5xl mx-auto px-6 text-center relative z-10 reveal">
+    <div class="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-lg border border-white/15">
+      <span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+      <span class="font-display text-xs tracking-wider uppercase text-white/85">Consulta gratuita</span>
+    </div>
+    <h2 class="font-display font-extrabold text-4xl md:text-6xl tracking-tight leading-tight mb-6">
+      ¿Listo para estudiar<br>en <span class="accent-underline">Argentina</span>?
+    </h2>
+    <p class="text-primary-fixed-dim text-lg md:text-xl max-w-2xl mx-auto mb-10">
+      No dejes tu futuro al azar. Agenda una asesoría gratuita y da el primer paso hacia tu sueño internacional.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <a href="contacto.html" class="btn-primary">
+        Agendar consulta gratis <span class="material-symbols-outlined arrow" style="font-size:18px;">arrow_forward</span>
+      </a>
+      <a href="planes.html" class="btn-ghost">Ver planes y precios</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== WHATSAPP FAB ====== -->
+<a class="wa-fab" href="contacto.html" aria-label="Contactar por WhatsApp">
+  <svg fill="white" height="28" viewBox="0 0 16 16" width="28" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:1;">
+    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path>
+  </svg>
+</a>
+
+<!-- ====== FOOTER ====== -->
+<footer class="bg-primary-deep text-white pt-20 pb-10 relative overflow-hidden">
+  <div class="absolute inset-0 hero-grid opacity-40"></div>
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="grid md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+      <div class="md:col-span-5">
+        <a class="flex items-center gap-2 mb-5" href="index.html">
+          <span class="w-9 h-9 rounded-lg bg-secondary-container flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary-deep" style="font-size:22px;font-variation-settings:'FILL' 1;">public</span>
+          </span>
+          <span class="font-display font-extrabold text-xl">Global Net <span class="text-secondary-fixed-dim">Paraíso</span></span>
+        </a>
+        <p class="text-white/70 leading-relaxed max-w-md mb-6">Tu socio estratégico para estudiar en Argentina desde Ecuador. Excelencia académica internacional, paso a paso.</p>
+        <div class="flex gap-3">
+          <a href="#" class="w-10 h-10 rounded-lg bg-white/10 hover:bg-secondary-container hover:text-primary-deep flex items-center justify-center transition-all">
+            <span class="material-symbols-outlined" style="font-size:20px;">share</span>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-lg bg-white/10 hover:bg-secondary-container hover:text-primary-deep flex items-center justify-center transition-all">
+            <span class="material-symbols-outlined" style="font-size:20px;">mail</span>
+          </a>
+          <a href="contacto.html" class="w-10 h-10 rounded-lg bg-white/10 hover:bg-secondary-container hover:text-primary-deep flex items-center justify-center transition-all">
+            <span class="material-symbols-outlined" style="font-size:20px;">call</span>
+          </a>
+        </div>
+      </div>
+      <div class="md:col-span-3">
+        <h4 class="font-display font-bold mb-4 text-secondary-fixed-dim text-xs uppercase tracking-[0.2em]">Sitio</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a class="text-white/70 hover:text-white hover:translate-x-1 transition-all inline-block" href="index.html">Inicio</a></li>
+          <li><a class="text-white/70 hover:text-white hover:translate-x-1 transition-all inline-block" href="la-empresa.html">La Empresa</a></li>
+          <li><a class="text-white/70 hover:text-white hover:translate-x-1 transition-all inline-block" href="servicios.html">Servicios</a></li>
+          <li><a class="text-white/70 hover:text-white hover:translate-x-1 transition-all inline-block" href="planes.html">Planes</a></li>
+          <li><a class="text-white/70 hover:text-white hover:translate-x-1 transition-all inline-block" href="noticias.html">Noticias</a></li>
+          <li><a class="text-white/70 hover:text-white hover:translate-x-1 transition-all inline-block" href="resenas.html">Reseñas</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-4">
+        <h4 class="font-display font-bold mb-4 text-secondary-fixed-dim text-xs uppercase tracking-[0.2em]">Contacto</h4>
+        <ul class="space-y-3 text-sm text-white/80">
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-secondary-fixed-dim mt-0.5" style="font-size:20px;">location_on</span>
+            <span>Av. República del Salvador y Moscú, Edificio City Plaza, Quito, Ecuador.</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-secondary-fixed-dim" style="font-size:20px;">mail</span>
+            <a href="mailto:info@globalnetparaiso.com" class="hover:text-white">info@globalnetparaiso.com</a>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-secondary-fixed-dim" style="font-size:20px;">call</span>
+            <a href="tel:+593991234567" class="hover:text-white">+593 99 123 4567</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 flex flex-col md:flex-row justify-between gap-4 text-sm text-white/50">
+      <p>© 2026 Global Net Paraíso. Excelencia académica internacional.</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-white">Privacidad</a>
+        <a href="#" class="hover:text-white">Términos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ====== Tweaks panel (host-driven) ====== -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<div id="tweaks-root"></div>
+<script type="text/babel">
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accent": "#fccc38",
+    "animSpeed": 1,
+    "particles": true
+  }/*EDITMODE-END*/;
+
+  function applyTweaks(t) {
+    const root = document.documentElement;
+    root.style.setProperty("--c-accent", t.accent);
+    root.style.setProperty("--anim-speed", t.animSpeed);
+    document.getElementById("particles").style.display = t.particles ? "block" : "none";
+  }
+
+  function GNTweaks() {
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+    React.useEffect(() => { applyTweaks(t); }, [t]);
+    return (
+      <TweaksPanel title="Tweaks">
+        <TweakSection title="Color">
+          <TweakColor label="Acento" value={t.accent} onChange={v => setTweak("accent", v)} />
+        </TweakSection>
+        <TweakSection title="Animación">
+          <TweakSlider label="Velocidad" value={t.animSpeed} min={0.3} max={2.5} step={0.1}
+            onChange={v => setTweak("animSpeed", v)} formatValue={v => v.toFixed(1) + "×"} />
+          <TweakToggle label="Partículas en hero" value={t.particles} onChange={v => setTweak("particles", v)} />
+        </TweakSection>
+      </TweaksPanel>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById("tweaks-root")).render(<GNTweaks />);
+</script>
+
+<!-- ====== Behavior scripts ====== -->
+<script>
+(() => {
+  // Particles
+  const pc = document.getElementById("particles");
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement("span");
+    p.className = "particle";
+    p.style.left = (Math.random() * 100) + "%";
+    p.style.animationDelay = (-Math.random() * 15) + "s";
+    p.style.animationDuration = (10 + Math.random() * 12) + "s";
+    p.style.setProperty("--drift", (Math.random() * 200 - 100) + "px");
+    p.style.width = p.style.height = (3 + Math.random() * 6) + "px";
+    p.style.opacity = 0.3 + Math.random() * 0.5;
+    if (Math.random() > 0.5) p.style.background = "rgba(181, 196, 255, 0.6)";
+    pc.appendChild(p);
+  }
+
+  // Scroll progress
+  const sp = document.getElementById("scroll-progress");
+  const onScroll = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    sp.style.width = (max ? (h.scrollTop / max * 100) : 0) + "%";
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+  document.querySelectorAll(".reveal, .reveal-stagger").forEach(el => io.observe(el));
+
+  // Counter animation
+  const counterIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = +el.dataset.count;
+      const suffix = el.dataset.suffix || "";
+      const duration = 1600;
+      const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      counterIo.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll(".counter").forEach(el => counterIo.observe(el));
+
+  // Timeline scroll-reveal
+  const steps = [...document.querySelectorAll(".step")];
+  const fillEl = document.getElementById("timeline-fill");
+  const tlIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const idx = steps.indexOf(e.target);
+      setTimeout(() => {
+        e.target.classList.add("in");
+        const pct = ((idx) / (steps.length - 1)) * 100;
+        if (fillEl) fillEl.style.width = pct + "%";
+      }, idx * 250);
+      tlIo.unobserve(e.target);
+    });
+  }, { threshold: 0.4 });
+  steps.forEach(s => tlIo.observe(s));
+
+  // Service card spotlight
+  document.querySelectorAll(".svc-card").forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      card.style.setProperty("--my", (e.clientY - r.top) + "px");
+    });
+  });
+
+  // Testimonials carousel
+  const track = document.getElementById("test-track");
+  const slides = track.children;
+  const dotsWrap = document.getElementById("test-dots");
+  let perView = window.innerWidth >= 768 ? 3 : 1;
+  const groups = Math.max(1, slides.length - perView + 1);
+  let idx = 0;
+  for (let i = 0; i < groups; i++) {
+    const d = document.createElement("button");
+    d.className = "test-dot" + (i === 0 ? " active" : "");
+    d.onclick = () => go(i);
+    dotsWrap.appendChild(d);
+  }
+  const go = (i) => {
+    idx = ((i % groups) + groups) % groups;
+    track.style.transform = `translateX(-${idx * (100 / perView)}%)`;
+    [...dotsWrap.children].forEach((d, k) => d.classList.toggle("active", k === idx));
+  };
+  document.getElementById("test-prev").onclick = () => go(idx - 1);
+  document.getElementById("test-next").onclick = () => go(idx + 1);
+  let auto = setInterval(() => go(idx + 1), 5000);
+  track.parentElement.addEventListener("mouseenter", () => clearInterval(auto));
+  track.parentElement.addEventListener("mouseleave", () => auto = setInterval(() => go(idx + 1), 5000));
+
+  window.addEventListener("resize", () => {
+    const np = window.innerWidth >= 768 ? 3 : 1;
+    if (np !== perView) location.reload();
+  });
+})();
+</script>
+</body></html>

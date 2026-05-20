@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Planes - StudyBridge Net Paraíso</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e9e7ed","primary-container": "#0a2463","on-primary-fixed": "#00164d","error-container": "#ffdad6","on-background": "#1b1b20","outline": "#757681","secondary-fixed-dim": "#f0c12c","on-error": "#ffffff","surface-container-highest": "#e3e2e8","on-tertiary-fixed-variant": "#454747","tertiary": "#131516","on-tertiary-fixed": "#1a1c1c","primary": "#00103e","surface-dim": "#dbd9df","surface-container-low": "#f5f3f9","inverse-primary": "#b5c4ff","inverse-on-surface": "#f2f0f6","tertiary-container": "#282a2a","background": "#faf8ff","tertiary-fixed-dim": "#c6c6c7","on-primary-fixed-variant": "#2e4382","on-surface": "#1b1b20","primary-fixed": "#dce1ff","surface": "#faf8ff","on-tertiary-container": "#8f9191","inverse-surface": "#303035","on-secondary-fixed": "#241a00","outline-variant": "#c5c6d2","on-primary-container": "#7a8ed2","surface-tint": "#475b9c","secondary-container": "#fccc38","error": "#ba1a1a","on-secondary-container": "#6f5600","tertiary-fixed": "#e2e2e2","surface-container": "#efedf3","on-surface-variant": "#444650","primary-fixed-dim": "#b5c4ff","secondary-fixed": "#ffdf90","on-primary": "#ffffff","on-error-container": "#93000a","surface-variant": "#e3e2e8","secondary": "#755b00","on-tertiary": "#ffffff","on-secondary-fixed-variant": "#584400","on-secondary": "#ffffff","surface-bright": "#faf8ff","surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    "spacing": { "container-max": "1280px", "stack-sm": "8px", "gutter": "24px", "section-padding": "80px", "stack-md": "16px", "stack-lg": "24px" },
+                    "fontFamily": { "body-md": ["Inter"], "h3": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "label-sm": ["Inter"], "h1": ["Plus Jakarta Sans"], "h2": ["Plus Jakarta Sans"] },
+                    "fontSize": { "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }], "h3": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }], "label-sm": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }], "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }], "h2": ["36px", { "lineHeight": "1.3", "fontWeight": "700" }] }
+                }
+            }
+        }
+    </script>
+<style>.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }</style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<nav class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md sticky top-0 w-full z-50 border-b border-blue-50 dark:border-blue-900/30 shadow-[0px_4px_20px_rgba(10,36,99,0.05)]">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 py-4">
+<a class="text-xl font-bold text-blue-900 dark:text-white scale-95 active:scale-90 hover:opacity-90 transition-all duration-300" href="index.html">Global Net Paraíso</a>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-['Plus_Jakarta_Sans'] font-medium text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors hover:opacity-90 transition-all duration-300 scale-95 active:scale-90" href="index.html">Inicio</a>
+<a class="font-['Plus_Jakarta_Sans'] font-medium text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors hover:opacity-90 transition-all duration-300 scale-95 active:scale-90" href="la-empresa.html">La Empresa</a>
+<a class="font-['Plus_Jakarta_Sans'] font-medium text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors hover:opacity-90 transition-all duration-300 scale-95 active:scale-90" href="servicios.html">Servicios</a>
+<a aria-current="page" class="font-['Plus_Jakarta_Sans'] font-medium text-sm tracking-tight text-blue-900 dark:text-blue-400 font-bold border-b-2 border-yellow-500 pb-1 hover:opacity-90 transition-all duration-300 scale-95 active:scale-90" href="planes.html">Planes</a>
+<a class="font-['Plus_Jakarta_Sans'] font-medium text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors hover:opacity-90 transition-all duration-300 scale-95 active:scale-90" href="noticias.html">Noticias</a>
+<a class="font-['Plus_Jakarta_Sans'] font-medium text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors hover:opacity-90 transition-all duration-300 scale-95 active:scale-90" href="resenas.html">Reseñas</a>
+<a class="font-['Plus_Jakarta_Sans'] font-medium text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors hover:opacity-90 transition-all duration-300 scale-95 active:scale-90" href="contacto.html">Contacto</a>
+</div>
+<a class="hidden md:inline-flex bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-6 py-3 rounded-lg hover:opacity-90 transition-all duration-300 scale-95 active:scale-90 shadow-sm" href="contacto.html">Consulta gratis</a>
+<button id="mobile-menu-btn" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden text-primary-container p-2"><span class="material-symbols-outlined text-[24px]">menu</span></button>
+</div>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden border-t border-blue-50 bg-white/95 backdrop-blur-md">
+<div class="flex flex-col px-6 py-4 space-y-4 font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight">
+<a class="text-slate-600 hover:text-blue-800 transition-colors" href="index.html">Inicio</a>
+<a class="text-slate-600 hover:text-blue-800 transition-colors" href="la-empresa.html">La Empresa</a>
+<a class="text-slate-600 hover:text-blue-800 transition-colors" href="servicios.html">Servicios</a>
+<a class="text-blue-900 font-bold border-b border-yellow-500 pb-1 w-fit" href="planes.html">Planes</a>
+<a class="text-slate-600 hover:text-blue-800 transition-colors" href="noticias.html">Noticias</a>
+<a class="text-slate-600 hover:text-blue-800 transition-colors" href="resenas.html">Reseñas</a>
+<a class="text-slate-600 hover:text-blue-800 transition-colors" href="contacto.html">Contacto</a>
+<a class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-lg text-center font-semibold" href="contacto.html">Consulta gratis</a>
+</div>
+</div>
+</nav>
+<main class="w-full">
+<!-- Hero Section -->
+<section class="w-full py-section-padding bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-6 text-center">
+<h1 class="font-h1 text-h1 text-primary-container mb-stack-md">Nuestros Planes</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Soluciones integrales para tu viaje académico a Argentina. Elige el plan que mejor se adapte a tus necesidades y comienza tu futuro hoy.</p>
+</div>
+</section>
+<!-- Pricing Cards Section -->
+<section class="w-full py-section-padding">
+<div class="max-w-container-max mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter items-center">
+<!-- Básico Plan -->
+<div class="bg-surface rounded-xl p-[32px] shadow-[0px_4px_20px_rgba(10,36,99,0.05)] hover:shadow-[0px_8px_30px_rgba(10,36,99,0.1)] transition-all duration-300 border border-outline-variant flex flex-col h-full">
+<div class="mb-stack-lg"><h3 class="font-h3 text-h3 text-primary-container mb-stack-sm">Básico</h3><p class="font-body-md text-body-md text-on-surface-variant">Asesoría inicial y trámites fundamentales.</p></div>
+<div class="mb-stack-lg"><span class="font-h2 text-h2 text-primary-container">$199</span></div>
+<ul class="space-y-stack-md mb-stack-lg flex-grow">
+<li class="flex items-start"><span class="material-symbols-outlined text-secondary-fixed-dim mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-body-md text-on-surface">Asesoría de universidades</span></li>
+<li class="flex items-start"><span class="material-symbols-outlined text-secondary-fixed-dim mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-body-md text-on-surface">Revisión de documentos básicos</span></li>
+<li class="flex items-start"><span class="material-symbols-outlined text-secondary-fixed-dim mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-body-md text-on-surface">Guía de visado estudiantil</span></li>
+</ul>
+<a class="w-full border border-primary-container text-primary-container font-label-sm text-label-sm py-3 rounded-lg hover:bg-surface-container-high transition-colors mt-auto text-center block" href="contacto.html">Elegir Básico</a>
+</div>
+<!-- Estándar Plan (Most Popular) -->
+<div class="bg-surface rounded-xl p-[32px] shadow-[0px_8px_30px_rgba(10,36,99,0.1)] transition-all duration-300 border-2 border-secondary-container flex flex-col h-full relative transform md:-translate-y-4">
+<div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-4 py-1 rounded-full whitespace-nowrap">Most Popular</div>
+<div class="mb-stack-lg mt-stack-sm"><h3 class="font-h3 text-h3 text-primary-container mb-stack-sm">Estándar</h3><p class="font-body-md text-body-md text-on-surface-variant">La experiencia completa de reubicación y admisión.</p></div>
+<div class="mb-stack-lg"><span class="font-h2 text-h2 text-primary-container">$399</span></div>
+<ul class="space-y-stack-md mb-stack-lg flex-grow">
+<li class="flex items-start"><span class="material-symbols-outlined text-secondary-fixed-dim mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-body-md text-on-surface">Todo del plan Básico</span></li>
+<li class="flex items-start"><span class="material-symbols-outlined text-secondary-fixed-dim mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-body-md text-on-surface">Traducción y legalización de títulos</span></li>
+<li class="flex items-start"><span class="material-symbols-outlined text-secondary-fixed-dim mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-body-md text-on-surface">Búsqueda de alojamiento temporal</span></li>
+<li class="flex items-start"><span class="material-symbols-outlined text-secondary-fixed-dim mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-body-md text-on-surface">Acompañamiento migratorio</span></li>
+</ul>
+<a class="w-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm py-3 rounded-lg hover:opacity-90 transition-opacity mt-auto shadow-sm text-center block" href="contacto.html">Elegir Estándar</a>
+</div>
+<!-- Premium Plan -->
+<div class="bg-surface rounded-xl p-[32px] shadow-[0px_4px_20px_rgba(10,36,99,0.05)] hover:shadow-[0px_8px_30px_rgba(10,36,99,0.1)] transition-all duration-300 border border-outline-variant flex flex-col h-full">
+<div class="mb-stack-lg"><h3 class="font-h3 text-h3 text-primary-container mb-stack-sm">Premium</h3><p class="font-body-md text-body-md text-on-surface-variant">Servicio VIP con acompañamiento personalizado 24/7.</p></div>
+<div class="mb-stack-lg"><span class="font-h2 text-h2 text-primary-container">$699</span></div>
+<ul class="space-y-stack-md mb-stack-lg flex-grow">
+<li class="flex items-start"><span class="material-symbols-outlined text-secondary-fixed-dim mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-body-md text-on-surface">Todo del plan Estándar</span></li>
+<li class="flex items-start"><span class="material-symbols-outlined text-secondary-fixed-dim mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-body-md text-on-surface">Recepción en el aeropuerto</span></li>
+<li class="flex items-start"><span class="material-symbols-outlined text-secondary-fixed-dim mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-body-md text-on-surface">Gestión de cuenta bancaria y DNI</span></li>
+<li class="flex items-start"><span class="material-symbols-outlined text-secondary-fixed-dim mr-2" style="font-variation-settings: 'FILL' 1;">check_circle</span><span class="font-body-md text-body-md text-on-surface">Asesoría de tutoría primer mes</span></li>
+</ul>
+<a class="w-full border border-primary-container text-primary-container font-label-sm text-label-sm py-3 rounded-lg hover:bg-surface-container-high transition-colors mt-auto text-center block" href="contacto.html">Elegir Premium</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Comparison Table -->
+<section class="w-full py-section-padding bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-6">
+<div class="text-center mb-stack-lg">
+<h2 class="font-h2 text-h2 text-primary-container mb-stack-sm">Comparativa de Servicios</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Detalle exhaustivo de lo que incluye cada plan.</p>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse bg-surface rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(10,36,99,0.05)]">
+<thead class="bg-surface-container-highest">
+<tr>
+<th class="p-4 font-label-sm text-label-sm text-primary-container border-b border-outline-variant w-1/4">Característica</th>
+<th class="p-4 font-label-sm text-label-sm text-primary-container border-b border-outline-variant text-center w-1/4">Básico</th>
+<th class="p-4 font-label-sm text-label-sm text-primary-container border-b border-outline-variant text-center w-1/4 bg-secondary-container/10">Estándar</th>
+<th class="p-4 font-label-sm text-label-sm text-primary-container border-b border-outline-variant text-center w-1/4">Premium</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-surface-variant hover:bg-surface-container-lowest transition-colors"><td class="p-4 font-body-md text-body-md text-on-surface">Asesoría de Universidades</td><td class="p-4 text-center"><span class="material-symbols-outlined text-secondary-fixed-dim">check</span></td><td class="p-4 text-center bg-secondary-container/5"><span class="material-symbols-outlined text-secondary-fixed-dim">check</span></td><td class="p-4 text-center"><span class="material-symbols-outlined text-secondary-fixed-dim">check</span></td></tr>
+<tr class="border-b border-surface-variant hover:bg-surface-container-lowest transition-colors"><td class="p-4 font-body-md text-body-md text-on-surface">Revisión de Documentos</td><td class="p-4 text-center"><span class="material-symbols-outlined text-secondary-fixed-dim">check</span></td><td class="p-4 text-center bg-secondary-container/5"><span class="material-symbols-outlined text-secondary-fixed-dim">check</span></td><td class="p-4 text-center"><span class="material-symbols-outlined text-secondary-fixed-dim">check</span></td></tr>
+<tr class="border-b border-surface-variant hover:bg-surface-container-lowest transition-colors"><td class="p-4 font-body-md text-body-md text-on-surface">Traducción Oficial</td><td class="p-4 text-center"><span class="material-symbols-outlined text-outline-variant">remove</span></td><td class="p-4 text-center bg-secondary-container/5"><span class="material-symbols-outlined text-secondary-fixed-dim">check</span></td><td class="p-4 text-center"><span class="material-symbols-outlined text-secondary-fixed-dim">check</span></td></tr>
+<tr class="border-b border-surface-variant hover:bg-surface-container-lowest transition-colors"><td class="p-4 font-body-md text-body-md text-on-surface">Búsqueda de Alojamiento</td><td class="p-4 text-center"><span class="material-symbols-outlined text-outline-variant">remove</span></td><td class="p-4 text-center bg-secondary-container/5"><span class="material-symbols-outlined text-secondary-fixed-dim">check</span></td><td class="p-4 text-center"><span class="material-symbols-outlined text-secondary-fixed-dim">check</span></td></tr>
+<tr class="hover:bg-surface-container-lowest transition-colors"><td class="p-4 font-body-md text-body-md text-on-surface">Recepción Aeropuerto</td><td class="p-4 text-center"><span class="material-symbols-outlined text-outline-variant">remove</span></td><td class="p-4 text-center bg-secondary-container/5"><span class="material-symbols-outlined text-outline-variant">remove</span></td><td class="p-4 text-center"><span class="material-symbols-outlined text-secondary-fixed-dim">check</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="w-full py-section-padding">
+<div class="max-w-3xl mx-auto px-6">
+<div class="text-center mb-stack-lg">
+<h2 class="font-h2 text-h2 text-primary-container mb-stack-sm">Preguntas Frecuentes</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Resolvemos tus dudas sobre nuestros planes y servicios.</p>
+</div>
+<div class="space-y-stack-sm">
+<details class="group bg-surface border border-outline-variant rounded-lg [&_summary::-webkit-details-marker]:hidden">
+<summary class="flex items-center justify-between p-4 cursor-pointer font-h3 text-[20px] text-primary-container"><span>¿Puedo cambiar de plan más adelante?</span><span class="material-symbols-outlined group-open:-rotate-180 transition-transform duration-300">expand_more</span></summary>
+<div class="p-4 pt-0 font-body-md text-body-md text-on-surface-variant border-t border-outline-variant/30 mt-2">Sí, puedes hacer un upgrade (mejora) a un plan superior en cualquier momento pagando la diferencia. Contáctanos y ajustaremos tu proceso sin interrupciones.</div>
+</details>
+<details class="group bg-surface border border-outline-variant rounded-lg [&_summary::-webkit-details-marker]:hidden">
+<summary class="flex items-center justify-between p-4 cursor-pointer font-h3 text-[20px] text-primary-container"><span>¿Los precios incluyen pasajes aéreos?</span><span class="material-symbols-outlined group-open:-rotate-180 transition-transform duration-300">expand_more</span></summary>
+<div class="p-4 pt-0 font-body-md text-body-md text-on-surface-variant border-t border-outline-variant/30 mt-2">No, los planes cubren exclusivamente nuestros servicios de consultoría, gestión documental, y acompañamiento. Los pasajes, tasas universitarias y manutención son responsabilidad del estudiante.</div>
+</details>
+<details class="group bg-surface border border-outline-variant rounded-lg [&_summary::-webkit-details-marker]:hidden">
+<summary class="flex items-center justify-between p-4 cursor-pointer font-h3 text-[20px] text-primary-container"><span>¿Cuánto tiempo toma el proceso de admisión?</span><span class="material-symbols-outlined group-open:-rotate-180 transition-transform duration-300">expand_more</span></summary>
+<div class="p-4 pt-0 font-body-md text-body-md text-on-surface-variant border-t border-outline-variant/30 mt-2">El proceso completo puede tomar entre 3 a 6 meses, dependiendo de los tiempos de respuesta de las instituciones gubernamentales para la legalización de documentos y las fechas de inscripción de las universidades.</div>
+</details>
+<details class="group bg-surface border border-outline-variant rounded-lg [&_summary::-webkit-details-marker]:hidden">
+<summary class="flex items-center justify-between p-4 cursor-pointer font-h3 text-[20px] text-primary-container"><span>¿Ofrecen facilidades de pago?</span><span class="material-symbols-outlined group-open:-rotate-180 transition-transform duration-300">expand_more</span></summary>
+<div class="p-4 pt-0 font-body-md text-body-md text-on-surface-variant border-t border-outline-variant/30 mt-2">Entendemos el esfuerzo que requiere estudiar en el extranjero. Ofrecemos pagos fraccionados en cuotas a lo largo del proceso. El plan Premium incluye opciones de financiamiento a 6 meses sin intereses.</div>
+</details>
+<details class="group bg-surface border border-outline-variant rounded-lg [&_summary::-webkit-details-marker]:hidden">
+<summary class="flex items-center justify-between p-4 cursor-pointer font-h3 text-[20px] text-primary-container"><span>¿Qué pasa si mi visa es denegada?</span><span class="material-symbols-outlined group-open:-rotate-180 transition-transform duration-300">expand_more</span></summary>
+<div class="p-4 pt-0 font-body-md text-body-md text-on-surface-variant border-t border-outline-variant/30 mt-2">Nuestro equipo legal revisa exhaustivamente todos los expedientes para minimizar este riesgo. En caso de denegación, ofrecemos asesoría gratuita para apelar o reintroducir la solicitud si el plan contratado fue Estándar o Premium.</div>
+</details>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full pt-20 pb-10 bg-blue-900 dark:bg-slate-950 text-white font-['Inter'] text-sm leading-relaxed border-t border-white/10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-6">
+<div class="col-span-1 md:col-span-1">
+<span class="text-2xl font-black text-white mb-4 block">Global Net Paraíso</span>
+<p class="text-slate-300 mb-6">Brindando excelencia académica internacional y acompañamiento integral para estudiantes Ecuatorianos en Argentina.</p>
+</div>
+<div class="col-span-1 md:col-span-1">
+<h4 class="font-h3 text-[18px] text-white mb-4">Navegación</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-yellow-500 underline-offset-4" href="index.html">Inicio</a></li>
+<li><a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-yellow-500 underline-offset-4" href="la-empresa.html">La Empresa</a></li>
+<li><a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-yellow-500 underline-offset-4" href="servicios.html">Servicios</a></li>
+<li><a class="text-yellow-500 font-semibold hover:underline decoration-yellow-500 underline-offset-4" href="planes.html">Planes</a></li>
+</ul>
+</div>
+<div class="col-span-1 md:col-span-1">
+<h4 class="font-h3 text-[18px] text-white mb-4">Comunidad</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-yellow-500 underline-offset-4" href="noticias.html">Noticias</a></li>
+<li><a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-yellow-500 underline-offset-4" href="resenas.html">Reseñas</a></li>
+</ul>
+</div>
+<div class="col-span-1 md:col-span-1">
+<h4 class="font-h3 text-[18px] text-white mb-4">Legal</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-yellow-500 underline-offset-4" href="contacto.html">Contacto</a></li>
+<li><a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-yellow-500 underline-offset-4" href="#">Privacidad</a></li>
+<li><a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-yellow-500 underline-offset-4" href="#">Términos</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-white/10 text-slate-400 text-center">© 2024 Global Net Paraíso. Brindando excelencia académica internacional.</div>
+</footer>
+<!-- Floating WhatsApp Button -->
+<a aria-label="Contactar por WhatsApp" class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-[0px_4px_20px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform z-50 flex items-center justify-center" href="contacto.html">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">forum</span>
+</a>
+</body></html>
